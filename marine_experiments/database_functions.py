@@ -16,20 +16,21 @@ def get_db_connection(dbname,
                    cursor_factory=RealDictCursor)
 
 
-def get_experiment(conn: connection,
-                   exp_type: str = None,
-                   score_over: int = None) -> list[dict]:
+def get_experiment(conn, exp_type=None, score_over=None):
 
     cursor = conn.cursor(cursor_factory=RealDictCursor)
 
     query = """
     SELECT
-        TO_CHAR(e.experiment_date, 'YYYY-MM-DD') AS experiment_date,
         e.experiment_id,
-        et.type_name AS experiment_type,
-        ROUND((e.score / et.max_score) * 100, 2)::text AS score,
+        e.subject_id,
         sp.species_name AS species,
-        e.subject_id
+        TO_CHAR(e.experiment_date, 'YYYY-MM-DD') AS experiment_date,
+        et.type_name AS experiment_type,
+        CONCAT(
+            ROUND((e.score::numeric / et.max_score) * 100, 2),
+            '%'
+        ) AS score
     FROM experiment e
     JOIN experiment_type et
         ON e.experiment_type_id = et.experiment_type_id
@@ -47,15 +48,20 @@ def get_experiment(conn: connection,
         params["type"] = exp_type.lower()
 
     if score_over is not None:
-        conditions.append("((e.score / et.max_score) * 100) >= %(score_over)s")
+        conditions.append(
+            "((e.score::numeric / et.max_score) * 100) >= %(score_over)s")
         params["score_over"] = score_over
 
     if conditions:
         query += " WHERE " + " AND ".join(conditions)
 
     query += """
-    ORDER BY e.experiment_date DESC, e.experiment_id DESC   
-      """
+    ORDER BY
+        e.experiment_date DESC,
+        et.type_name ASC,
+        e.subject_id ASC,
+        e.experiment_id ASC
+    """
 
     cursor.execute(query, params)
     rows = cursor.fetchall()
