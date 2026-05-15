@@ -49,10 +49,10 @@ def endpoint_get_experiment():
         if not score_over.isdigit():
             return {"error": "Invalid value for 'score_over' parameter"}, 400
 
-    score_over = int(score_over)
+        score_over = int(score_over)
 
-    if score_over < 0 or score_over > 100:
-        return {"error": "Invalid value for 'score_over' parameter"}, 400
+        if score_over < 0 or score_over > 100:
+            return {"error": "Invalid value for 'score_over' parameter"}, 400
 
     if exp_type:
         exp_type = exp_type.lower()

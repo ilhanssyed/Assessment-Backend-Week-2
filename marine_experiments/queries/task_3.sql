@@ -1,4 +1,4 @@
-SELECT
+SELECT DISTINCT
     et.type_name,
     sp.species_name,
     ROUND(AVG(e.score), 1) AS average_score
@@ -13,6 +13,6 @@ GROUP BY
     et.type_name,
     sp.species_name
 HAVING
-    AVG((e.score / et.max_score) * 100) > 5
+    AVG(e.score) > 5
 ORDER BY
     average_score DESC;

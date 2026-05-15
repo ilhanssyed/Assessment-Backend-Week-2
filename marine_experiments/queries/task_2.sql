@@ -4,7 +4,8 @@ SELECT
     sp.species_name AS species,
     TO_CHAR(e.experiment_date, 'YYYY-MM-DD') AS experiment_date,
     et.type_name AS experiment_type,
-    ROUND((e.score / et.max_score) * 100, 2) AS scoreFROM experiment e
+    ROUND((e.score::NUMERIC / et.max_score) * 100, 2) AS score
+FROM experiment e
 JOIN experiment_type et
     ON e.experiment_type_id = et.experiment_type_id
 JOIN subject s

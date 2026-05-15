@@ -27,7 +27,8 @@ def get_experiment(conn: connection,
         TO_CHAR(e.experiment_date, 'YYYY-MM-DD') AS experiment_date,
         e.experiment_id,
         et.type_name AS experiment_type,
-        TO_CHAR(ROUND((e.score / et.max_score) * 100, 2), 'FM999990.00') AS score        sp.species_name AS species,
+        ROUND((e.score / et.max_score) * 100, 2)::text AS score,
+        sp.species_name AS species,
         e.subject_id
     FROM experiment e
     JOIN experiment_type et
@@ -53,8 +54,8 @@ def get_experiment(conn: connection,
         query += " WHERE " + " AND ".join(conditions)
 
     query += """
-    ORDER BY e.experiment_date DESC, e.experiment_id
-    """
+    ORDER BY e.experiment_date DESC, e.experiment_id DESC   
+      """
 
     cursor.execute(query, params)
     rows = cursor.fetchall()
