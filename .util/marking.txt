@@ -4,9 +4,9 @@ rootdir: /home/runner/work/Assessment-Backend-Week-2/Assessment-Backend-Week-2/m
 collected 73 items
 
 test_queries.py .................F..F..F..F..F..                         [ 43%]
-test_routes.py ......F...........FF.....................                 [100%]
+test_routes.py F.FFFFFFF.........FFFFFFFFFFFFF..........                 [100%]
 
-======================== 8 failed, 65 passed in 15.73s =========================
+======================== 26 failed, 47 passed in 11.85s ========================
 ************* Module api
 marine_experiments/api.py:3:0: W0611: Unused datetime imported from datetime (unused-import)
 marine_experiments/api.py:6:0: W0611: Unused sql imported from psycopg2 (unused-import)
@@ -14,10 +14,10 @@ marine_experiments/api.py:7:0: W0611: Unused RealDictCursor imported from psycop
 marine_experiments/api.py:8:0: W0611: Unused connection imported from psycopg2.extensions (unused-import)
 ************* Module database_functions
 marine_experiments/database_functions.py:19:0: C0116: Missing function or method docstring (missing-function-docstring)
-marine_experiments/database_functions.py:67:0: C0116: Missing function or method docstring (missing-function-docstring)
-marine_experiments/database_functions.py:84:4: W0101: Unreachable code (unreachable)
-marine_experiments/database_functions.py:84:4: W2301: Unnecessary ellipsis constant (unnecessary-ellipsis)
-marine_experiments/database_functions.py:87:0: C0116: Missing function or method docstring (missing-function-docstring)
+marine_experiments/database_functions.py:73:0: C0116: Missing function or method docstring (missing-function-docstring)
+marine_experiments/database_functions.py:90:4: W0101: Unreachable code (unreachable)
+marine_experiments/database_functions.py:90:4: W2301: Unnecessary ellipsis constant (unnecessary-ellipsis)
+marine_experiments/database_functions.py:93:0: C0116: Missing function or method docstring (missing-function-docstring)
 
 ------------------------------------------------------------------
 Your code has been rated at 8.85/10 (previous run: 8.85/10, +0.00)
