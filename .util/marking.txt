@@ -3,17 +3,22 @@ platform linux -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0
 rootdir: /home/runner/work/Assessment-Backend-Week-2/Assessment-Backend-Week-2/marine_experiments
 collected 73 items
 
-test_queries.py FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                         [ 43%]
-test_routes.py FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                 [100%]
+test_queries.py ..F....FF...FF...FF.F..F..F..F..                         [ 43%]
+test_routes.py F.FFFFFFF.........FFFFFFFFFFFFF..........                 [100%]
 
-============================== 73 failed in 9.88s ==============================
+======================== 32 failed, 41 passed in 10.84s ========================
 ************* Module api
 marine_experiments/api.py:3:0: W0611: Unused datetime imported from datetime (unused-import)
-marine_experiments/api.py:5:0: W0611: Unused request imported from flask (unused-import)
 marine_experiments/api.py:6:0: W0611: Unused sql imported from psycopg2 (unused-import)
+marine_experiments/api.py:7:0: W0611: Unused RealDictCursor imported from psycopg2.extras (unused-import)
+marine_experiments/api.py:8:0: W0611: Unused connection imported from psycopg2.extensions (unused-import)
 ************* Module database_functions
-marine_experiments/database_functions.py:16:0: C0304: Final newline missing (missing-final-newline)
+marine_experiments/database_functions.py:19:0: C0116: Missing function or method docstring (missing-function-docstring)
+marine_experiments/database_functions.py:66:0: C0116: Missing function or method docstring (missing-function-docstring)
+marine_experiments/database_functions.py:83:4: W0101: Unreachable code (unreachable)
+marine_experiments/database_functions.py:83:4: W2301: Unnecessary ellipsis constant (unnecessary-ellipsis)
+marine_experiments/database_functions.py:86:0: C0116: Missing function or method docstring (missing-function-docstring)
 
 ------------------------------------------------------------------
-Your code has been rated at 7.89/10 (previous run: 7.89/10, +0.00)
+Your code has been rated at 8.85/10 (previous run: 8.85/10, +0.00)
 
